@@ -557,15 +557,15 @@
             .runs(function() {
               tmhDynamicLocale.set('es');
               expect($cookieStore.get('customStorageKeyName')).toBe(undefined);
-              expect($cookieStore.get('tmhDynamicLocale.locale')).toBe(undefined);
+              expect($cookieStore.get('tmhDynamicLocale.locale')).toBe('en-us');
             })
             .waitsFor(function() {
               $timeout.flush(50);
               return $locale.id === 'es';
             }, 'locale not updated', 2000)
             .runs(function() {
-              expect($cookieStore.get('tmhDynamicLocale.locale')).toBe(undefined);
               expect($cookieStore.get('customStorageKeyName')).toBe('es');
+              expect($cookieStore.get('tmhDynamicLocale.locale')).toBe('en-us');
             })
             .done();
             job.start();
